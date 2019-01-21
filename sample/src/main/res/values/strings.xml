@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">UserAgentForAndroid</string>
     <string name="action_settings">Settings</string>
+
+    <string name="hint_search_string">Enter Search Text</string>
+    <string name="button_search">Check Search Count</string>
 </resources>
