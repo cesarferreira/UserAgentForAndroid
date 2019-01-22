@@ -10,6 +10,10 @@
 
 ## Expected result
 
+<p align="center">
+  <img src="extras/carbon.png" width="100%" />
+</p>
+
 ```
 D/OkHttp: --> GET https://example.com/api/v1/users
 D/OkHttp: User-Agent: DeliveryApp/1.0.0 (Android Pie 9.0; PIXEL3 XL)
