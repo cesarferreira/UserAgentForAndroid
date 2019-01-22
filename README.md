@@ -8,7 +8,7 @@
 </p>
 
 
-## Usage
+## Expected result
 
 ```
 D/OkHttp: --> GET https://example.com/api/v1/users
@@ -31,12 +31,16 @@ Important part:
 
 ```kotlin
 val userAgent = UserAgentForAndroid(
-    appName = context.getString(R.string.app_name),
-    appVersion = BuildConfig.VERSION_NAME
+    appName = context.getString(R.string.app_name), // DeliveryApp
+    appVersion = BuildConfig.VERSION_NAME           // 1.0.0
 )
+```
 
-val loggingInterceptor = HttpLoggingInterceptor()    .apply {
-    level = HttpLoggingInterceptor.Level.BODY
+### Just add a logging interceptor
+
+```kotlin
+val loggingInterceptor = HttpLoggingInterceptor().apply {
+    level = HttpLoggingInterceptor.Level.HEADERS
 }
 
 val okHttpClient = OkHttpClient.Builder()
@@ -44,7 +48,11 @@ val okHttpClient = OkHttpClient.Builder()
     .addInterceptor(loggingInterceptor)
     .addInterceptor(userAgent)
     .build()
+```
 
+### Add the `OkHttpClient` to your retrofit builder
+
+```kotlin
 val retrofit = Retrofit.Builder()
   .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
   .addConverterFactory(GsonConverterFactory.create())
