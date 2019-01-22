@@ -6,8 +6,6 @@
   <img src="extras/police.png" width="50%" />
 </p>
 
-## Expected result
-
 <p align="center">
   <img src="extras/carbon.png" width="100%" />
 </p>
