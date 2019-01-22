@@ -2,12 +2,11 @@
 
 > Identify important app information on the `User-agent` header
 
-<!-- <p align="center">
-  <img src="extras/police.png" width="50%" />
+<p align="center">
+  <img src="extras/police.png" width="30%" />
 </p>
 
-
-## Expected result -->
+## Expected result
 
 <p align="center">
   <img src="extras/carbon.png" width="100%" />
