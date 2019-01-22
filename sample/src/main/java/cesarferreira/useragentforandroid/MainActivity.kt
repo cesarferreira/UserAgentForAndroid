@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var disposable: Disposable
+    private var disposable: Disposable? = null
 
-    private val wikiApiServe by lazy { WikiApiService.create() }
+    private val wikiApiServe by lazy { WikiApiService.create(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +39,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        disposable.dispose()
+        disposable?.dispose()
     }
 }
