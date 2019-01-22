@@ -1,7 +1,14 @@
-# UserAgentForAndroid
+# UserAgentForAndroid [![](https://jitpack.io/v/cesarferreira/UserAgentForAndroid.svg)](https://jitpack.io/#cesarferreira/UserAgentForAndroid)
+
 
 > Identify important app information on the `User-agent` header
 
+<p align="center">
+  <img src="extras/police.png" width="50%" />
+</p>
+
+
+## Usage
 
 ```
 D/OkHttp: --> GET https://example.com/api/v1/users
@@ -23,11 +30,45 @@ Important part:
 ## Usage:
 
 ```kotlin
-val userAgent = UserAgentForAndroid(appName, appVersion)
+val userAgent = UserAgentForAndroid(
+    appName = context.getString(R.string.app_name),
+    appVersion = BuildConfig.VERSION_NAME
+)
 
+val loggingInterceptor = HttpLoggingInterceptor()    .apply {
+    level = HttpLoggingInterceptor.Level.BODY
+}
 
-OkHttpClient.Builder()
+val okHttpClient = OkHttpClient.Builder()
     .followRedirects(true)
+    .addInterceptor(loggingInterceptor)
     .addInterceptor(userAgent)
     .build()
+
+val retrofit = Retrofit.Builder()
+  .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+  .addConverterFactory(GsonConverterFactory.create())
+  .client(okHttpClient)
+  .baseUrl(BASE_URL)
+  .build()
 ```
+
+# Install
+Just add the following dependency in your app's `build.gradle`
+
+```groovy
+allprojects { repositories { maven { url 'https://jitpack.io' } }}
+```
+
+```groovy
+dependencies {
+    implementation 'com.github.cesarferreira:UserAgentForAndroid:0.1.0'
+}
+```
+
+
+## Created by
+[Cesar Ferreira](https://cesarferreira.com)
+
+## License
+MIT © [Cesar Ferreira](http://cesarferreira.com)
