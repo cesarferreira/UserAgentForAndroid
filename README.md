@@ -1,11 +1,16 @@
-<p align="center">
-  <img src="extras/carbon.png" width="100%" />
-</p>
-
 # UserAgentForAndroid [![](https://jitpack.io/v/cesarferreira/UserAgentForAndroid.svg)](https://jitpack.io/#cesarferreira/UserAgentForAndroid)
 
 > Identify important app information on the `User-agent` header
 
+<p align="center">
+  <img src="extras/police.png" width="50%" />
+</p>
+
+## Expected result
+
+<p align="center">
+  <img src="extras/carbon.png" width="100%" />
+</p>
 
 Important part:
 
