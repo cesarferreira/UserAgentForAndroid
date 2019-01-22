@@ -29,9 +29,12 @@ val userAgent = UserAgentForAndroid(
 val loggingInterceptor = HttpLoggingInterceptor().apply {
     level = HttpLoggingInterceptor.Level.HEADERS
 }
+```
 
+Add both interceptors:
+
+```kotlin
 val okHttpClient = OkHttpClient.Builder()
-    .followRedirects(true)
     .addInterceptor(loggingInterceptor)
     .addInterceptor(userAgent)
     .build()
@@ -57,7 +60,7 @@ allprojects { repositories { maven { url 'https://jitpack.io' } }}
 
 ```groovy
 dependencies {
-    implementation 'com.github.cesarferreira:UserAgentForAndroid:0.1.0'
+    implementation 'com.github.cesarferreira:UserAgentForAndroid:1.0.0'
 }
 ```
 
