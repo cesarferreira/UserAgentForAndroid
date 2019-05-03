@@ -48,10 +48,18 @@ class UserAgentForAndroid(
     }
 
     private fun getCurrentAndroidRelease(): Double {
-        return java.lang.Double.parseDouble(
-            java.lang.String(Build.VERSION.RELEASE)
-                .replaceAll("(\\d+[.]\\d+)(.*)", "$1")
-        )
+        val strippedVersion = java.lang.String(Build.VERSION.RELEASE).replaceAll("(\\d+[.]\\d+)(.*)", "$1")
+        return try {
+            java.lang.Double.parseDouble(strippedVersion)
+        } catch (exp: Exception) {
+            when (strippedVersion) {
+                "Q" -> 10
+                "R" -> 11
+                "S" -> 12
+                "T" -> 13
+                else -> (-1)
+            }.toDouble()
+        }
     }
 
 }

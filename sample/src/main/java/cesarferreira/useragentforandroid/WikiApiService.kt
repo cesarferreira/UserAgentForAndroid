@@ -29,7 +29,7 @@ interface WikiApiService {
                 appVersion = BuildConfig.VERSION_NAME
             )
             val loggingInterceptor = HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BODY
+                level = HttpLoggingInterceptor.Level.HEADERS
             }
 
             val okHttpClient = OkHttpClient.Builder()
