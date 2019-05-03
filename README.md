@@ -60,7 +60,7 @@ allprojects { repositories { maven { url 'https://jitpack.io' } }}
 
 ```groovy
 dependencies {
-    implementation 'com.github.cesarferreira:UserAgentForAndroid:1.0.0'
+    implementation 'com.github.cesarferreira:UserAgentForAndroid:1.0.1'
 }
 ```
 
