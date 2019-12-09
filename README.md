@@ -1,10 +1,11 @@
 # UserAgentForAndroid [![](https://jitpack.io/v/cesarferreira/UserAgentForAndroid.svg)](https://jitpack.io/#cesarferreira/UserAgentForAndroid)
 
 > Identify important app information on the `User-agent` header
-
+<!--
 <p align="center">
   <img src="extras/police.png" width="50%" />
 </p>
+-->
 
 <p align="center">
   <img src="extras/carbon.png" width="100%" />
@@ -50,6 +51,17 @@ val retrofit = Retrofit.Builder()
   .baseUrl(BASE_URL)
   .build()
 ```
+
+# Extra
+
+If you want to access any of this information:
+
+```kotlin
+DeviceInfo.getDeviceName()         // Pixel 3 XL
+DeviceInfo.currentAndroidName()    // Pie
+DeviceInfo.androidReleaseNumber()  // 9.0
+```
+
 
 # Install
 Just add the following dependency in your app's `build.gradle`

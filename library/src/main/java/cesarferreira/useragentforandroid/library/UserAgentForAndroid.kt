@@ -1,7 +1,6 @@
 package cesarferreira.useragentforandroid.library
 
 import android.os.Build
-import com.jaredrummler.android.device.DeviceName
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -15,9 +14,9 @@ class UserAgentForAndroid(
 
         // D/OkHttp: User-Agent: DeliveryApp/1.0.0 (Android Pie 9.0; ONEPLUS A6000)
 
-        val deviceName = DeviceName.getDeviceName()
-        val androidName = currentAndroidName()
-        val androidRelease = getCurrentAndroidRelease()
+        val deviceName = DeviceInfo.getDeviceName()
+        val androidName = DeviceInfo.currentAndroidName()
+        val androidRelease = DeviceInfo.androidReleaseNumber()
         val userAgent =
             "$appName/$appVersion (Android $androidName $androidRelease, API ${Build.VERSION.SDK_INT}; $deviceName)"
 
@@ -27,39 +26,4 @@ class UserAgentForAndroid(
         val request = requestBuilder.build()
         return chain.proceed(request)
     }
-
-    private fun currentAndroidName(): String {
-        val release = getCurrentAndroidRelease()
-
-        return when {
-            release >= 4.1 && release < 4.4 -> "Jelly Bean"
-            release < 5 -> "Kit Kat"
-            release < 6 -> "Lollipop"
-            release < 7 -> "Marshmallow"
-            release < 8 -> "Nougat"
-            release < 9 -> "Oreo"
-            release < 10 -> "Pie"
-            release < 11 -> "Q"
-            release < 12 -> "R"
-            release < 13 -> "S"
-            release < 14 -> "T"
-            else -> "??"
-        }
-    }
-
-    private fun getCurrentAndroidRelease(): Double {
-        val strippedVersion = java.lang.String(Build.VERSION.RELEASE).replaceAll("(\\d+[.]\\d+)(.*)", "$1")
-        return try {
-            java.lang.Double.parseDouble(strippedVersion)
-        } catch (exp: Exception) {
-            when (strippedVersion) {
-                "Q" -> 10
-                "R" -> 11
-                "S" -> 12
-                "T" -> 13
-                else -> (-1)
-            }.toDouble()
-        }
-    }
-
 }
